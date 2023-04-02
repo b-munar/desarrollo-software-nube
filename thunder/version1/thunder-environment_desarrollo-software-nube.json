@@ -1,0 +1,12 @@
+{
+    "client": "Thunder Client",
+    "environmentName": "desarrollo-software-nube",
+    "dateExported": "2023-04-02T04:52:34.649Z",
+    "version": "1.0",
+    "variables": [
+        {
+            "name": "auth_token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2ODA0MTI4ODd9.OyD9G79zGjUuArdYMeSnWjKtiTBOflvxRj6luiBSSlo"
+        }
+    ]
+}

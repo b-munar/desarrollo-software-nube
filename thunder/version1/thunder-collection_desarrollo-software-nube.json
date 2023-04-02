@@ -1,0 +1,110 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "desarrollo-software-nube",
+    "dateExported": "2023-04-02T04:51:43.120Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "43873bb0-2a6c-4784-9170-d8327fd04cf2",
+            "colId": "734ce18c-bb9c-44aa-8870-e421e989ffe7",
+            "containerId": "",
+            "name": "signup",
+            "url": "localhost:5000/signup",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-04-02T04:10:29.123Z",
+            "modified": "2023-04-02T04:23:03.388Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*",
+                    "isDisabled": true
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"user\",\n  \"password\": \"password\",\n  \"email\": \"email@email.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5ba38eb1-90ad-4ab7-ab9e-11e5fdcc6405",
+            "colId": "734ce18c-bb9c-44aa-8870-e421e989ffe7",
+            "containerId": "",
+            "name": "signin",
+            "url": "localhost:5000/signin",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-04-02T04:12:16.545Z",
+            "modified": "2023-04-02T04:29:17.847Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*",
+                    "isDisabled": true
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"user\",\n  \"password\": \"password\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.auth_token",
+                    "action": "setto",
+                    "value": "{{auth_token}}"
+                }
+            ]
+        },
+        {
+            "_id": "d432d127-a7d1-48f3-be8d-16f4da9ce39d",
+            "colId": "734ce18c-bb9c-44aa-8870-e421e989ffe7",
+            "containerId": "",
+            "name": "new task",
+            "url": "localhost:5000/task",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-04-02T04:12:38.115Z",
+            "modified": "2023-04-02T04:33:14.555Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*",
+                    "isDisabled": true
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"path\":\"/files/princesa.jpeg\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{auth_token}}"
+            },
+            "tests": []
+        }
+    ]
+}
