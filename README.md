@@ -4,8 +4,8 @@ ext install ms-azuretools.vscode-docker
 docker compose build
 docker compose up -d
 
-docker_compose build
-docker_compose up -d 
+docker-compose build
+docker-compose up -d 
 
 docker logs --follow desarrollo-software-nube-api-1
 

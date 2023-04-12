@@ -22,7 +22,7 @@ services:
       - ./files:/files
       - /api/migrations
     ports:
-      - 5000:5000
+      - 7070:5000
     deploy:
       resources:
         limits:
