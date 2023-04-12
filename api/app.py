@@ -17,4 +17,4 @@ api.add_resource(Signin, '/signin')
 api.add_resource(Task, '/task')
 
 if __name__ == '__main__':
-    app.run(debug=True, port=7070)
+    app.run(debug=True)
