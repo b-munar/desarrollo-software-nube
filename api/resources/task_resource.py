@@ -1,9 +1,14 @@
 from db import db
 from models import Task as TaskModel, File
 import base64
+import json
 from flask import request
 from flask_restful import Resource
 from utils import authenticate
+
+from models import db , Task, TaskSchema
+
+task_schema = TaskSchema()
 
 class Task(Resource):
     method_decorators = [authenticate]
@@ -17,3 +22,10 @@ class Task(Resource):
         db.session.add(new_task)
         db.session.commit()
         return "hi"
+    
+    method_decorators = [authenticate]
+    def get(self,**kwargs):  
+             tasks = Task.query.all()
+             tasks_json = [task_schema.dump(tasks) for task in tasks]
+             return tasks_json
+    

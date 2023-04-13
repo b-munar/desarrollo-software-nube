@@ -14,7 +14,7 @@ api = Api(app)
 
 api.add_resource(Signup, '/signup')
 api.add_resource(Signin, '/signin')
-api.add_resource(Task, '/task')
+api.add_resource(Task, '/api/task')
 
 if __name__ == '__main__':
     app.run(debug=True)
