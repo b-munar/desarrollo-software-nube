@@ -1,20 +1,20 @@
 {
     "client": "Thunder Client",
     "collectionName": "desarrollo-software-nube",
-    "dateExported": "2023-04-13T04:49:35.554Z",
+    "dateExported": "2023-04-13T20:43:14.686Z",
     "version": "1.1",
     "folders": [],
     "requests": [
         {
-            "_id": "c42f29b6-20b7-42fb-9a14-9408ed14c02e",
-            "colId": "8bbaec18-7c31-46c6-96ae-b4b5577b87f2",
+            "_id": "c8bcc308-8fbf-4512-bc84-991287496a3b",
+            "colId": "0666eb89-d4c8-4849-958c-7562c1b0d3df",
             "containerId": "",
             "name": "signup",
             "url": "localhost:7070/api/signup",
             "method": "POST",
             "sortNum": 10000,
-            "created": "2023-04-13T03:13:55.836Z",
-            "modified": "2023-04-13T03:13:55.836Z",
+            "created": "2023-04-13T17:17:03.831Z",
+            "modified": "2023-04-13T17:17:03.831Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -36,15 +36,15 @@
             "tests": []
         },
         {
-            "_id": "a0b64257-45f0-4dd9-8fd6-da967dad7051",
-            "colId": "8bbaec18-7c31-46c6-96ae-b4b5577b87f2",
+            "_id": "50356402-4c77-4abb-afc6-b3e2aa2ce5a9",
+            "colId": "0666eb89-d4c8-4849-958c-7562c1b0d3df",
             "containerId": "",
             "name": "signin",
             "url": "localhost:7070/api/signin",
             "method": "POST",
             "sortNum": 20000,
-            "created": "2023-04-13T03:13:55.837Z",
-            "modified": "2023-04-13T03:13:55.837Z",
+            "created": "2023-04-13T17:17:03.832Z",
+            "modified": "2023-04-13T17:17:03.832Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -73,21 +73,27 @@
             ]
         },
         {
-            "_id": "1d7ef115-52f1-42a0-89ee-e89f26e11ad7",
-            "colId": "8bbaec18-7c31-46c6-96ae-b4b5577b87f2",
+            "_id": "a6104c85-0359-42e7-a423-ea854081cfac",
+            "colId": "0666eb89-d4c8-4849-958c-7562c1b0d3df",
             "containerId": "",
             "name": "new task",
             "url": "localhost:7070/api/tasks",
             "method": "POST",
             "sortNum": 30000,
-            "created": "2023-04-13T03:13:55.838Z",
-            "modified": "2023-04-13T03:32:42.171Z",
+            "created": "2023-04-13T17:17:03.833Z",
+            "modified": "2023-04-13T20:42:52.337Z",
             "headers": [],
             "params": [],
             "body": {
-                "type": "json",
-                "raw": "{\n  \"path\":\"/files/princesa.jpeg\"\n}",
-                "form": []
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "new_format",
+                        "value": "ZIP"
+                    }
+                ],
+                "files": []
             },
             "auth": {
                 "type": "bearer",
@@ -96,15 +102,15 @@
             "tests": []
         },
         {
-            "_id": "88b8b781-954b-434b-a065-3a848b0c170b",
-            "colId": "8bbaec18-7c31-46c6-96ae-b4b5577b87f2",
+            "_id": "2add29f2-6b2c-41cc-aad0-fb65db3d900b",
+            "colId": "0666eb89-d4c8-4849-958c-7562c1b0d3df",
             "containerId": "",
             "name": "get task",
             "url": "localhost:7070/api/tasks/1",
             "method": "GET",
             "sortNum": 40000,
-            "created": "2023-04-13T03:28:36.565Z",
-            "modified": "2023-04-13T04:31:46.769Z",
+            "created": "2023-04-13T17:17:03.834Z",
+            "modified": "2023-04-13T17:17:03.834Z",
             "headers": [],
             "params": [],
             "auth": {
