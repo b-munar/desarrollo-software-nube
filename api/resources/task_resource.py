@@ -34,7 +34,7 @@ class Task(Resource):
         return task_schema.dump(new_task)
     
     def get(self,**kwargs):  
-        tasks = Task.query.all()
+        tasks = TaskModel.query.all()
         tasks_json = [task_schema.dump(task) for task in tasks]
         return tasks_json
     
