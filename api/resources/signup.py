@@ -16,6 +16,11 @@ class Signup(Resource):
                 new_user.hash_password()
                 db.session.add(new_user)
                 db.session.commit()
+
+                newpath = f'/files-cloud/{new_user.username}'
+                if not os.path.exists(newpath):
+                    os.makedirs(newpath)
+                
                 return {'status': 'success',
                     'message': 'Successfully registered.'
                 }, 201
