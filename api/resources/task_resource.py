@@ -4,6 +4,10 @@ import base64
 from flask import request
 from flask_restful import Resource
 from utils import authenticate
+from schemas.task_schema import TaskSchema
+from models.task import TypeTask
+
+task_schema = TaskSchema()
 
 class Task(Resource):
     method_decorators = [authenticate]
@@ -17,3 +21,12 @@ class Task(Resource):
         db.session.add(new_task)
         db.session.commit()
         return "hi"
+    
+
+class Tasks(Resource):
+    method_decorators = [authenticate]
+    def get(self, id_task, **kwargs):
+        task = TaskModel.query.get_or_404(id_task)
+        task.type_task = TypeTask(task.type_task)
+        return task_schema.dump(task)
+
