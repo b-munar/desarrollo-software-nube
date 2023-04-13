@@ -2,7 +2,6 @@ from flask import Flask
 from flask_restful import Api
 from flask_migrate import Migrate
 from config import Config
-
 from db import db
 from resources import Signin, Signup, Task
 
