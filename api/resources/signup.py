@@ -9,22 +9,25 @@ class Signup(Resource):
     def post(self):
         user_schema = UserSchema()
         user_schema_dump = user_schema.dump(request.get_json())
-        try:
-            new_user = User(**user_schema_dump)
-            new_user.hash_password()
-            db.session.add(new_user)
-            db.session.commit()
-
-            newpath = f'/files-cloud/{new_user.username}'
-            if not os.path.exists(newpath):
-                os.makedirs(newpath)
-                
-            return {'status': 'success',
+        if user_schema_dump["password"] == user_schema_dump["password_verify"]:
+             try:
+                del user_schema_dump["password_verify"]
+                new_user = User(**user_schema_dump)
+                new_user.hash_password()
+                db.session.add(new_user)
+                db.session.commit()
+                return {'status': 'success',
                     'message': 'Successfully registered.'
                 }, 201
-        except:
-            return {
+             except:
+                return {
                     'status': 'fail',
                     'message':  'Some error occurred. Please try again.'
                 }, 401
+        else:
+            return {
+                    'status': 'fail',
+                    'message':  'Check that passwords are the same'
+                }, 400
+       
 

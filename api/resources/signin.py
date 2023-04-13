@@ -11,7 +11,15 @@ class Signin(Resource):
         user_schema = UserSchema()
         user_schema_dump = user_schema.dump(request.get_json())
         try:
-            user = User.query.filter_by(username=user_schema_dump['username']).first()
+            if 'username' in user_schema_dump:
+                user = User.query.filter_by(username=user_schema_dump['username']).first()
+            elif 'email' in user_schema_dump:
+                user = User.query.filter_by(email=user_schema_dump['email']).first()
+            else:
+                return {
+                    'status': 'fail',
+                    'message': 'Send a valid username or email'
+                }, 400
             if user.check_password(user_schema_dump['password']):
                 auth_token = jwt.encode({
                             'user_id': user.id,
