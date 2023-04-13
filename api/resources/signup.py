@@ -3,6 +3,7 @@ from models import User
 from flask import request
 from flask_restful import Resource
 from db import db
+import os
 
 class Signup(Resource):
     def post(self):
