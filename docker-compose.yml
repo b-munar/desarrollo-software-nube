@@ -19,8 +19,8 @@ services:
     build: api
     volumes:
       - ./api:/api
-      - ./files:/files
       - /api/migrations
+      - /files-cloud
     ports:
       - 7070:5000
     deploy:
