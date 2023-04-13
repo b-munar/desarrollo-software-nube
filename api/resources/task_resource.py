@@ -1,12 +1,11 @@
 from db import db
-from models import Task as TaskModel, File
+from models import Task as TaskModel, File, TypeTask
 import base64
 import json
 from flask import request
 from flask_restful import Resource
 from utils import authenticate
-from schemas.task_schema import TaskSchema
-from models.task import TypeTask
+from schemas import TaskSchema
 
 task_schema = TaskSchema()
 

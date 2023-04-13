@@ -1,20 +1,20 @@
 {
     "client": "Thunder Client",
     "collectionName": "desarrollo-software-nube",
-    "dateExported": "2023-04-13T20:43:14.686Z",
+    "dateExported": "2023-04-13T22:33:31.667Z",
     "version": "1.1",
     "folders": [],
     "requests": [
         {
-            "_id": "c8bcc308-8fbf-4512-bc84-991287496a3b",
-            "colId": "0666eb89-d4c8-4849-958c-7562c1b0d3df",
+            "_id": "994afecf-0282-46b0-b418-a4d2cd43e7ca",
+            "colId": "a48fc759-5486-42b2-9900-d81a48c12081",
             "containerId": "",
             "name": "signup",
             "url": "localhost:7070/api/signup",
             "method": "POST",
             "sortNum": 10000,
-            "created": "2023-04-13T17:17:03.831Z",
-            "modified": "2023-04-13T17:17:03.831Z",
+            "created": "2023-04-13T20:45:12.970Z",
+            "modified": "2023-04-13T22:27:50.394Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -30,21 +30,21 @@
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"username\": \"user\",\n  \"password\": \"password\",\n  \"email\": \"email@email.com\"\n}",
+                "raw": "{\n  \"username\": \"user\",\n  \"password\": \"password\",\n  \"password_verify\": \"password\",\n  \"email\": \"email@email.com\"\n}",
                 "form": []
             },
             "tests": []
         },
         {
-            "_id": "50356402-4c77-4abb-afc6-b3e2aa2ce5a9",
-            "colId": "0666eb89-d4c8-4849-958c-7562c1b0d3df",
+            "_id": "dfe719a4-6aca-4d89-a1e6-9628eabf5854",
+            "colId": "a48fc759-5486-42b2-9900-d81a48c12081",
             "containerId": "",
             "name": "signin",
             "url": "localhost:7070/api/signin",
             "method": "POST",
             "sortNum": 20000,
-            "created": "2023-04-13T17:17:03.832Z",
-            "modified": "2023-04-13T17:17:03.832Z",
+            "created": "2023-04-13T20:45:12.971Z",
+            "modified": "2023-04-13T20:45:12.971Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -73,15 +73,15 @@
             ]
         },
         {
-            "_id": "a6104c85-0359-42e7-a423-ea854081cfac",
-            "colId": "0666eb89-d4c8-4849-958c-7562c1b0d3df",
+            "_id": "71ca831f-4134-4c4e-bb0c-c8182cd6d6fb",
+            "colId": "a48fc759-5486-42b2-9900-d81a48c12081",
             "containerId": "",
             "name": "new task",
             "url": "localhost:7070/api/tasks",
             "method": "POST",
             "sortNum": 30000,
-            "created": "2023-04-13T17:17:03.833Z",
-            "modified": "2023-04-13T20:42:52.337Z",
+            "created": "2023-04-13T20:45:12.972Z",
+            "modified": "2023-04-13T20:47:42.800Z",
             "headers": [],
             "params": [],
             "body": {
@@ -93,7 +93,12 @@
                         "value": "ZIP"
                     }
                 ],
-                "files": []
+                "files": [
+                    {
+                        "name": "file",
+                        "value": "/home/brahi/repositories/desarrollo-software-nube/files/princesa.jpeg"
+                    }
+                ]
             },
             "auth": {
                 "type": "bearer",
@@ -102,15 +107,15 @@
             "tests": []
         },
         {
-            "_id": "2add29f2-6b2c-41cc-aad0-fb65db3d900b",
-            "colId": "0666eb89-d4c8-4849-958c-7562c1b0d3df",
+            "_id": "9a4a46e7-74e4-48e2-bfc0-fe00e1c717c6",
+            "colId": "a48fc759-5486-42b2-9900-d81a48c12081",
             "containerId": "",
             "name": "get task",
             "url": "localhost:7070/api/tasks/1",
             "method": "GET",
             "sortNum": 40000,
-            "created": "2023-04-13T17:17:03.834Z",
-            "modified": "2023-04-13T17:17:03.834Z",
+            "created": "2023-04-13T20:45:12.973Z",
+            "modified": "2023-04-13T20:45:12.973Z",
             "headers": [],
             "params": [],
             "auth": {
