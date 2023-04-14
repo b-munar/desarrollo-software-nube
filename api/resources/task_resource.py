@@ -1,15 +1,14 @@
-from db import db
-from sqlalchemy import desc
-from models import Task as TaskModel, File, TypeTask
-import base64
-import json
 from flask import request
 from flask_restful import Resource
+
+from db import db
 from utils import authenticate
 from schemas import TaskSchema
+from models import Task as TaskModel, File, TypeTask
+
 task_schema = TaskSchema()
 
-class Task(Resource):
+class Tasks(Resource):
     method_decorators = [authenticate]
     def post(self, **kwargs):
         request_file = request.files.get('file')
@@ -40,7 +39,7 @@ class Task(Resource):
                         
 
     
-class Tasks(Resource):
+class Task(Resource):
     method_decorators = [authenticate]
     def get(self, id_task, **kwargs):
         task = TaskModel.query.get_or_404(id_task)
