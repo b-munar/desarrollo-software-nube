@@ -10,3 +10,6 @@ docker-compose up -d
 docker logs --follow desarrollo-software-nube-api-1
 
 https://github.com/mathbrahian/rest-api-flask/blob/main/app.py
+
+
+celery -A tasks worker --loglevel=INFO
