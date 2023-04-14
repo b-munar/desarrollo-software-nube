@@ -1,11 +1,12 @@
 from db import db
+from sqlalchemy import desc
 from models import Task as TaskModel, File, TypeTask
 import base64
+import json
 from flask import request
 from flask_restful import Resource
 from utils import authenticate
 from schemas import TaskSchema
-
 task_schema = TaskSchema()
 
 class Task(Resource):
@@ -25,13 +26,26 @@ class Task(Resource):
         new_task = TaskModel(file_id=new_file.id, user_id=kwargs["user"].id, type_task=new_format)
         db.session.add(new_task)
         db.session.commit()
-
         return task_schema.dump(new_task)
     
+    def get(self,**kwargs):  
+        maxReq = request.args.get("max", None)
+        order = int(request.args.get("order", 0))
+        query = db.session.query(TaskModel).all()
+        tasks_json = [task_schema.dump(task) for task in query]
+        tasks_json.sort(key=lambda T: T['id'], reverse=order)
+        if maxReq is not None: 
+            maxReq = int(maxReq)
+        return tasks_json[:maxReq]
+                        
 
+    
 class Tasks(Resource):
     method_decorators = [authenticate]
     def get(self, id_task, **kwargs):
         task = TaskModel.query.get_or_404(id_task)
         return task_schema.dump(task)
+    
+    
+    
 
