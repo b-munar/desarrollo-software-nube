@@ -1,6 +1,5 @@
 from enum import IntEnum
 from datetime import datetime
-from marshmallow import Schema
 from db import db
 
 class TypeTask(IntEnum):
@@ -15,9 +14,3 @@ class Task(db.Model):
     time_stamp = db.Column(db.DateTime, default=datetime.utcnow)
     file_id = db.Column(db.Integer, db.ForeignKey('file.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-
-class TaskSchema(Schema):
-    class Meta:
-        model= Task
-        load_instance = True

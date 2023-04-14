@@ -1,4 +1,5 @@
 from db import db
+from sqlalchemy import desc
 from models import Task as TaskModel, File, TypeTask
 import base64
 import json
@@ -6,11 +7,6 @@ from flask import request
 from flask_restful import Resource
 from utils import authenticate
 from schemas import TaskSchema
-
-task_schema = TaskSchema()
-
-from models import db , Task, TaskSchema
-
 task_schema = TaskSchema()
 
 class Task(Resource):
@@ -33,9 +29,16 @@ class Task(Resource):
         return task_schema.dump(new_task)
     
     def get(self,**kwargs):  
-        tasks = TaskModel.query.all()
-        tasks_json = [task_schema.dump(task) for task in tasks]
-        return tasks_json
+        maxReq = request.args.get("max", None)
+        order = int(request.args.get("order", 0))
+        query = db.session.query(TaskModel).all()
+        tasks_json = [task_schema.dump(task) for task in query]
+        tasks_json.sort(key=lambda T: T['id'], reverse=order)
+        if maxReq is not None: 
+            maxReq = int(maxReq)
+        return tasks_json[:maxReq]
+                        
+
     
 class Tasks(Resource):
     method_decorators = [authenticate]
