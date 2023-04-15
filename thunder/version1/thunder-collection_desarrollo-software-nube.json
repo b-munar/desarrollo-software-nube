@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "desarrollo-software-nube",
-    "dateExported": "2023-04-15T17:03:31.822Z",
+    "dateExported": "2023-04-15T23:39:50.487Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -14,7 +14,7 @@
             "method": "POST",
             "sortNum": 10000,
             "created": "2023-04-15T14:19:59.540Z",
-            "modified": "2023-04-15T14:19:59.540Z",
+            "modified": "2023-04-15T23:39:46.084Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -44,7 +44,7 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2023-04-15T14:19:59.542Z",
-            "modified": "2023-04-15T14:19:59.542Z",
+            "modified": "2023-04-15T23:35:53.905Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -81,7 +81,7 @@
             "method": "POST",
             "sortNum": 30000,
             "created": "2023-04-15T14:19:59.543Z",
-            "modified": "2023-04-15T16:49:13.309Z",
+            "modified": "2023-04-15T23:20:31.115Z",
             "headers": [],
             "params": [],
             "body": {
@@ -115,7 +115,7 @@
             "method": "GET",
             "sortNum": 40000,
             "created": "2023-04-15T14:19:59.544Z",
-            "modified": "2023-04-15T14:19:59.544Z",
+            "modified": "2023-04-15T23:36:18.638Z",
             "headers": [],
             "params": [],
             "auth": {
@@ -134,6 +134,24 @@
             "sortNum": 50000,
             "created": "2023-04-15T16:52:05.448Z",
             "modified": "2023-04-15T17:02:26.989Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{auth_token}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "17739fb8-5669-44b7-9f98-05358b41d39d",
+            "colId": "c85a398a-0c75-4322-a01c-d7ac910a3832",
+            "containerId": "",
+            "name": "get file",
+            "url": "localhost:7070/api/files/princesa.jpeg",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2023-04-15T23:09:49.559Z",
+            "modified": "2023-04-15T23:37:02.990Z",
             "headers": [],
             "params": [],
             "auth": {
