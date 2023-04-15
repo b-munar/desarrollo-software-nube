@@ -8,4 +8,3 @@ marshmallow==3.19.0
 psycopg2==2.9.5
 PyJWT==2.6.0
 redis==4.5.4
-py7zr==0.20.4

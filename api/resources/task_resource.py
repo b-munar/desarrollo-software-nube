@@ -14,11 +14,12 @@ class Tasks(Resource):
     def post(self, **kwargs):
         request_file = request.files.get('file')
         file_name = request_file.filename
-        file_path = f'/files-cloud/{kwargs["user"].username}/{file_name}'
+        file_dir = f'/files-cloud/{kwargs["user"].username}'
+        file_path = f'{file_dir}/{file_name}'
 
         request_file.save(file_path)
         
-        new_file = File(path=file_path, name=file_name, user_id=kwargs["user"].id)
+        new_file = File(path=file_path, dir=file_dir, name=file_name, user_id=kwargs["user"].id)
         db.session.add(new_file)
         db.session.flush()
 
