@@ -5,6 +5,7 @@ from db import db
 from utils import authenticate
 from schemas import TaskSchema
 from models import Task as TaskModel, File, TypeTask
+import os
 
 task_schema = TaskSchema()
 
@@ -44,6 +45,24 @@ class Task(Resource):
     def get(self, id_task, **kwargs):
         task = TaskModel.query.get_or_404(id_task)
         return task_schema.dump(task)
+    
+    def delete(self, id_task, **kwargs):
+        task = TaskModel.query.get_or_404(id_task)
+        schema = task_schema.dump(task)
+        print(schema)
+        if schema['status']:
+            file = File.query.get_or_404(schema['file_id'])
+            if os.path.exists(file.path) and os.path.exists(file.path.rsplit('.', 1)[0] + '.' + str(schema['type_task'])):
+                os.remove(file.path)
+                os.remove(file.path.rsplit('.', 1)[0] + '.' + str(schema['type_task']))
+                db.session.delete(task)
+                db.session.delete(file)
+                db.session.commit()
+                return '', 204
+            else:
+                'No fue posible eliminar los archivos', 409
+
+        return 'El estado de la tarea de conversion es No Disponible', 409
     
     
     
