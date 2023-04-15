@@ -1,16 +1,14 @@
 import zipfile
 from models import File, Task
-from broker import make_celery
+from tasks.make_celery import make_celery
 from app import create_app
 
 flask_app = create_app()
 celery = make_celery(flask_app)
-# app = Celery('tasks', backend=Config.CELERY_RESULT_BACKEND, broker=Config.CELERY_BROKER_URL )
 
 @celery.on_after_configure.connect
 def setup_periodic_tasks(sender, **kwargs):
-    sender.add_periodic_task(1.0, queueing.s())
-
+    sender.add_periodic_task(5.0, queueing.s())
 
 @celery.task()
 def compress_zip(file_id):

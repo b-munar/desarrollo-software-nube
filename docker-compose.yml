@@ -22,7 +22,7 @@ services:
     deploy:  
       resources:
         limits:
-          cpus: '0.2'
+          cpus: '0.15'
           memory: 250M
 
   api:
@@ -36,8 +36,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.5'
-          memory: 500M
+          cpus: '0.65'
+          memory: 600M
     environment:
       FLASK_DEBUG: "on"
     depends_on:
@@ -45,3 +45,16 @@ services:
         condition: service_started
       broker:
         condition: service_started
+
+  nginx:
+    build: nginx
+    ports:
+      - 80:80
+    depends_on:
+      api:
+        condition: service_started
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 50M
