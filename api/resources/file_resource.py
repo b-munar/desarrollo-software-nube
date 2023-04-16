@@ -12,8 +12,7 @@ class File(Resource):
         schema = TaskSchema()
         file = FileModel.query.get_or_404(id_file)
         task = schema.dump(file.tasks[0])
-        print(task)
         if task['status']:
-            return send_from_directory(file.dir, file.name.rsplit('.', 1)[0] + '.' + str(task['type_task']), as_attachment=True)
+            return send_from_directory(file.dir, file.name.rsplit('.', 1)[0] + '.' + str(task['type_task']).lower(), as_attachment=True)
         else:
             return send_from_directory(file.dir, file.name, as_attachment=True)
