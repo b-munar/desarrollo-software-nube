@@ -2,6 +2,7 @@ import zipfile
 from models import File, Task
 from tasks.make_celery import make_celery
 from app import create_app
+from db import db
 
 flask_app = create_app()
 celery = make_celery(flask_app)
@@ -15,8 +16,12 @@ def compress_zip(file_id):
     file_to_zip = File.query.filter(File.id == file_id).first() 
     with zipfile.ZipFile(f"{file_to_zip.dir}/{file_to_zip.name.split('.')[0]}.zip", 'w') as zip:
         zip.write(file_to_zip.path)
+        task = Task.query.filter_by(file_id=file_id).first()
+        task.status=True
+        db.session.commit()
 
 @celery.task()
 def queueing():
     for task_to_zip in Task.query.filter_by(status = False):
         compress_zip.delay(task_to_zip.file_id)
+        

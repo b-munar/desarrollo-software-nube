@@ -33,6 +33,7 @@ services:
       - /files-cloud
     ports:
       - 7070:5000
+      - 5566:5566
     deploy:
       resources:
         limits:
