@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "099eb5d5-7b95-4cbb-a404-f9dfddcdbcd1",
+		"name": "API de Compresion de Archivos Equipo 2",
+		"description": "Nota: Para poder probar la aplicación debe realizar la intalación de manera local, ( no en VM), apuntando siempre a su localhost:8080 o sin puerto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16188128"
+	},
+	"item": [
+		{
+			"name": "Sign Up",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"user\",\n  \"password\": \"password\",\n  \"password_verify\": \"password\",\n  \"email\": \"email@email.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				},
+				"description": "### Request Body\n\n``` json\n{\n  \"username\": \"user\",\n  \"password\": \"password\",\n  \"password_verify\": \"password\",\n  \"email\": \"email@email.com\"\n}\n\n```\n\n### Response Body\n\n`Status 201 Created`\n\n``` json\n{\n  \"status\": \"success\",\n  \"message\": \"Successfully registered.\"\n}\n\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Log In",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auth_token\", jsonData.auth_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"user\",\n  \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				},
+				"description": "### Request Body\n\n``` json\n{\n  \"username\": \"user\",\n  \"password\": \"password\"\n}\n\n```\n\n### Response Body\n\n`Status: 200 OK`\n\n``` json\n{\n  \"status\": \"success\",\n  \"message\": \"Successfully logged in.\",\n  \"auth_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2ODE0MzI5ODl9.VWm93-jj5Hgaf-CkpLdgLOb63k8vRJCEzEdVDN4itI8\"\n}\n\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer {{auth_toke}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "new_format",
+							"value": "ZIP",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://llocalhost/api/tasks",
+					"protocol": "http",
+					"host": [
+						"llocalhost"
+					],
+					"path": [
+						"api",
+						"tasks"
+					]
+				},
+				"description": "<img src=\"https://content.pstmn.io/43175049-b791-4f5e-ae98-b7b92dc82a7a/Q2FwdHVyYSBkZSBwYW50YWxsYSAyMDIzLTA0LTE1IGEgbGEocykgMS41OS41NSBwLm0uLnBuZw==\" alt=\"Request%20Payload\" width=\"647\" height=\"237\">\n\n### Response Body\n\n`Status: 200 OK`\n\n``` json\n{\n  \"id\": 2,\n  \"status\": false,\n  \"time_stamp\": 1681427869.207855,\n  \"file_id\": 2,\n  \"user_id\": 1,\n  \"type_task\": \"ZIP\"\n}\n\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get task By Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/api/tasks/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"1"
+					]
+				},
+				"description": "En la url de la peticion ajustar el id señung la tarea que se quiera consultar\n\n/api/task/{{id_task}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all tasks with filters",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/api/tasks?max=2&order=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "max",
+							"value": "2"
+						},
+						{
+							"key": "order",
+							"value": "0"
+						}
+					]
+				},
+				"description": "Para este caso se obtinenen todas las tareas, con la posibilidad de filtrar con los siguentes parametros:\n\n- Max : Cantidad máxima de registros que quiere obtener.\n- Order: Orden en que quiere recibir los registros: 0 ascendente / 1 Descendente\n    \n\n<img src=\"https://content.pstmn.io/4a79fadf-2f7b-42e3-bfef-9ddd70e5c388/Q2FwdHVyYSBkZSBwYW50YWxsYSAyMDIzLTA0LTE1IGEgbGEocykgMS41OS41NSBwLm0uLnBuZw==\" alt=\"\">"
+			},
+			"response": []
+		},
+		{
+			"name": "Get File",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/api/files/<id_file>",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"files",
+						"<id_file>"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/api/tasks/<id_task>",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"<id_task>"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
