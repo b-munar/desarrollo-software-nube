@@ -1,18 +1,18 @@
 #!/bin/bash
 
-sleep 2
+sleep 5
 
 python3 -m flask db init
 
-sleep 3
+sleep 5
 
 python3 -m flask db migrate
 
-sleep 2
+sleep 5
 
 python3 -m flask db upgrade
 
-sleep 2
+sleep 3
 
 mkdir -p /home/celery/var/run/
 
