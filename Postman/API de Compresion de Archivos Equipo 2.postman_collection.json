@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "099eb5d5-7b95-4cbb-a404-f9dfddcdbcd1",
+		"_postman_id": "c60434fc-ed51-4a43-9d3a-a8aa4862f7c8",
 		"name": "API de Compresion de Archivos Equipo 2",
 		"description": "Nota: Para poder probar la aplicación debe realizar la intalación de manera local, ( no en VM), apuntando siempre a su localhost:8080 o sin puerto",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "16188128"
+		"_exporter_id": "17357537"
 	},
 	"item": [
 		{
@@ -25,10 +25,9 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost/api/auth/signup",
-					"protocol": "http",
+					"raw": "{{url}}/api/auth/signup",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
 					"path": [
 						"api",
@@ -67,10 +66,9 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost/api/auth/login",
-					"protocol": "http",
+					"raw": "{{url}}/api/auth/login",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
 					"path": [
 						"api",
@@ -90,7 +88,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "Bearer {{auth_toke}}",
+							"value": "{{auth_token}}",
 							"type": "string"
 						}
 					]
@@ -103,7 +101,7 @@
 						{
 							"key": "file",
 							"type": "file",
-							"src": []
+							"src": "/C:/Users/Usuario/Pictures/cc75387a-ca3b-46ec-8a6a-1ea5c49030d2.jpg"
 						},
 						{
 							"key": "new_format",
@@ -113,10 +111,9 @@
 					]
 				},
 				"url": {
-					"raw": "http://llocalhost/api/tasks",
-					"protocol": "http",
+					"raw": "{{url}}/api/tasks",
 					"host": [
-						"llocalhost"
+						"{{url}}"
 					],
 					"path": [
 						"api",
@@ -143,10 +140,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost/api/tasks/1",
-					"protocol": "http",
+					"raw": "{{url}}/api/tasks/1",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
 					"path": [
 						"api",
@@ -174,10 +170,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost/api/tasks?max=2&order=0",
-					"protocol": "http",
+					"raw": "{{url}}/api/tasks?max=2&order=0",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
 					"path": [
 						"api",
@@ -214,10 +209,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost/api/files/<id_file>",
-					"protocol": "http",
+					"raw": "{{url}}/api/files/<id_file>",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
 					"path": [
 						"api",
@@ -244,10 +238,9 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost/api/tasks/<id_task>",
-					"protocol": "http",
+					"raw": "{{url}}/api/tasks/<id_task>",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
 					"path": [
 						"api",
