@@ -36,8 +36,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '1.6'
-          memory: 1500M
+          cpus: '1.4'
+          memory: 1400M
     environment:
       FLASK_DEBUG: "on"
     depends_on:
@@ -56,5 +56,5 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.1'
-          memory: 100M
+          cpus: '0.3'
+          memory: 200M
