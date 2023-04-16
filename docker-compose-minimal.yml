@@ -8,8 +8,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.1'
-          memory: 150M
+          cpus: '0.05'
+          memory: 100M
 
   database:
     image: postgres:15.2-alpine
@@ -22,11 +22,13 @@ services:
     deploy:  
       resources:
         limits:
-          cpus: '0.2'
+          cpus: '0.15'
           memory: 250M
 
   api:
-    build: api
+    build:
+      context: api
+      dockerfile: minimal.Dockerfile
     volumes:
       - ./api:/api
       - /api/migrations
@@ -36,8 +38,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '1.6'
-          memory: 1500M
+          cpus: '0.75'
+          memory: 600M
     environment:
       FLASK_DEBUG: "on"
     depends_on:
@@ -56,5 +58,5 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.1'
-          memory: 100M
+          cpus: '0.05'
+          memory: 50M
