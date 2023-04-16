@@ -17,6 +17,6 @@ def create_app(config_filename=Config):
     api.add_resource(Signin, '/api/signin')
     api.add_resource(Tasks, '/api/tasks')
     api.add_resource(Task, '/api/tasks/<int:id_task>')
-    api.add_resource(File, '/api/files/<string:filename>')
+    api.add_resource(File, '/api/files/<int:id_file>')
 
     return app
