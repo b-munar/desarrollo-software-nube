@@ -1,5 +1,6 @@
 from flask import request
 from flask_restful import Resource
+from datetime import datetime
 
 from db import db
 from utils import authenticate
@@ -14,7 +15,9 @@ class Tasks(Resource):
     def post(self, **kwargs):
         request_file = request.files.get('file')
         file_name = request_file.filename
-        file_dir = f'/files-cloud/{kwargs["user"].username}'
+        file_dir = f'/files-cloud/{kwargs["user"].username}/{datetime.now()}'
+        if not os.path.exists(file_dir):
+            os.makedirs(file_dir)
         file_path = f'{file_dir}/{file_name}'
 
         request_file.save(file_path)
