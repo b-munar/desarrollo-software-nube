@@ -8,7 +8,7 @@ celery = make_celery(flask_app)
 
 @celery.on_after_configure.connect
 def setup_periodic_tasks(sender, **kwargs):
-    sender.add_periodic_task(5.0, queueing.s())
+    sender.add_periodic_task(10.0, queueing.s())
 
 @celery.task()
 def compress_zip(file_id):
