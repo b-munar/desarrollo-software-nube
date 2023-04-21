@@ -1,8 +1,8 @@
-from schemas import UserSchema
-from models import User
+from cloud_db.schemas import UserSchema
+from cloud_db.models import User
 from flask import request
 from flask_restful import Resource
-from db import db
+from database import Session
 import os
 
 class Signup(Resource):
@@ -14,8 +14,9 @@ class Signup(Resource):
                 del user_schema_dump["password_verify"]
                 new_user = User(**user_schema_dump)
                 new_user.hash_password()
-                db.session.add(new_user)
-                db.session.commit()
+                session = Session()
+                session.add(new_user)
+                session.commit()
 
                 newpath = f'/files-cloud/{new_user.username}'
                 if not os.path.exists(newpath):
@@ -35,4 +36,3 @@ class Signup(Resource):
                     'message':  'Check that passwords are the same'
                 }, 400
        
-

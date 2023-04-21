@@ -1,16 +1,9 @@
 FROM python:3.11.2-bullseye
+ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-
-WORKDIR /api
-
-ENV VIRTUAL_ENV=/opt/venv
-RUN python3 -m venv $VIRTUAL_ENV
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
-
+ENV POETRY_HOME="/usr/local"
+RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=/usr/local python3 -
+WORKDIR /usr/src/app
 COPY . .
-
-RUN pip install -r requirements.txt
-
+RUN poetry install --no-root
 ENTRYPOINT ["bash", "./entrypoint.sh" ]
-
-  
