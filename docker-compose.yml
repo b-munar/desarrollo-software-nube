@@ -5,7 +5,7 @@ services:
     build: api
     volumes:
       - ./api:/usr/src/app
-      - /files-cloud
+      - ./files-cloud:/files-files-cloud
     ports:
       - 7070:5000
       - 4000:4000

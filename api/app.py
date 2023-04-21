@@ -5,9 +5,6 @@ from resources import Signup, Signin ,Tasks, Task, File
 
 def create_app(config_filename=Config):
     app = Flask(__name__)
-    # app.config.from_object(config_filename)
-    
-    
     api = Api(app)
     api.add_resource(Signup, '/api/auth/signup')
     api.add_resource(Signin, '/api/auth/login')

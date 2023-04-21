@@ -27,3 +27,5 @@ Para utilizar prometheus, en una terminal a nivel de sistema
 
 
 poetry add git+https://github.com/b-munar/cloud-db.git
+
+docker inspect eaf8f577552e | grep "IPAddress"
