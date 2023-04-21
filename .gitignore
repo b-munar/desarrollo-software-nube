@@ -9,3 +9,5 @@ env/
 venv/
 *.iml
 *.idea
+
+/files-cloud
