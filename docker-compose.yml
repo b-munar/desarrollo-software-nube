@@ -1,39 +1,14 @@
 version: '3.9'
 
 services:
-  broker:
-    image: redis:7.0-alpine
-    ports:
-      - '6379:6379'
-    deploy:
-      resources:
-        limits:
-          cpus: '0.1'
-          memory: 150M
-
-  database:
-    image: postgres:15.2-alpine
-    environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    ports:
-      - 5432:5432
-    deploy:  
-      resources:
-        limits:
-          cpus: '0.2'
-          memory: 250M
-
   api:
     build: api
     volumes:
-      - ./api:/api
-      - /api/migrations
-      - /files-cloud
+      - ./api:/usr/src/app
+      - ./files-cloud:/files-cloud
     ports:
       - 7070:5000
-      - 5566:5566
+      - 4000:4000
     deploy:
       resources:
         limits:
@@ -41,12 +16,7 @@ services:
           memory: 1400M
     environment:
       FLASK_DEBUG: "on"
-    depends_on:
-      database:
-        condition: service_started
-      broker:
-        condition: service_started
-
+    
   nginx:
     build: nginx
     ports:

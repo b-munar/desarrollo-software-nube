@@ -1,17 +1,10 @@
 from flask import Flask
 from flask_restful import Api
-from flask_migrate import Migrate
 from config import Config
-from db import db
-from resources import Signin, Signup, Task, Tasks, File
+from resources import Signup, Signin ,Tasks, Task, File
 
 def create_app(config_filename=Config):
     app = Flask(__name__)
-    app.config.from_object(config_filename)
-    
-    db.init_app(app)
-    Migrate(app, db)
-    
     api = Api(app)
     api.add_resource(Signup, '/api/auth/signup')
     api.add_resource(Signin, '/api/auth/login')

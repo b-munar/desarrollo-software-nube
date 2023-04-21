@@ -2,7 +2,8 @@ from functools import wraps
 from flask import request
 from config import Config
 import jwt
-from models import User
+from cloud_db.models import User
+from database import Session
 def authenticate(func):
     @wraps(func)
     def decorated(*args, **kwargs):
@@ -32,8 +33,9 @@ def authenticate(func):
                 'message': 'Provide auth token or a valid auth token 1.'
                 }, 403   
             
-            
-            kwargs["user"] = User.query.get(data['user_id'])
+            session = Session()
+            kwargs["user"] = session.query(User).get(data['user_id'])
+            session.close()
             return func(*args, **kwargs)
 
     return decorated

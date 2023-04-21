@@ -24,3 +24,8 @@ y escribir en ese bash,
 Para utilizar prometheus, en una terminal a nivel de sistema
 
 > docker run --name Prometheus -v $(pwd)/prometheus.yml:/etc/prometheus/prometheus.yml -p 9090:9090 --network host prom/prometheus
+
+
+poetry add git+https://github.com/b-munar/cloud-db.git
+
+docker inspect eaf8f577552e | grep "IPAddress"
