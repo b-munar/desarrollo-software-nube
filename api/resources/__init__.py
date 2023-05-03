@@ -3,3 +3,4 @@ from .signup import Signup
 
 from .task_resource import Tasks, Task 
 from .file_resource import File
+from .ping import Ping
