@@ -5,6 +5,7 @@ from utils import authenticate
 from cloud_db.schemas import TaskSchema
 from cloud_db.models import Task as TaskModel, File, TypeTask
 import os
+from utils.gcp_storage import upload_file, delete_file
 
 task_schema = TaskSchema()
 
@@ -14,12 +15,10 @@ class Tasks(Resource):
     def post(self, **kwargs):
         request_file = request.files.get('file')
         file_name = request_file.filename
-        file_dir = f'/files-cloud/{kwargs["user"].username}/{datetime.now()}'
-        if not os.path.exists(file_dir):
-            os.makedirs(file_dir)
+        file_dir = f'files-cloud/{kwargs["user"].username}/{datetime.now()}'
         file_path = f'{file_dir}/{file_name}'
 
-        request_file.save(file_path)
+        upload_file(bucket_name="gropo-2-nube-2023", source_file=request_file, destination_file_name=file_path)
         session = Session()
         new_file = File(path=file_path, dir=file_dir, name=file_name, user_id=kwargs["user"].id)
         session.add(new_file)
@@ -59,14 +58,9 @@ class Task(Resource):
         schema = task_schema.dump(task)
         if schema['status']:
             file = session.query(File).get(schema['file_id'])
-            if os.path.exists(file.path) and os.path.exists(file.path.rsplit('.', 1)[0] + '.' + str(schema['type_task']).lower()):
-                os.remove(file.path)
-                os.remove(file.path.rsplit('.', 1)[0] + '.' + str(schema['type_task']).lower())
-                session.delete(task)
-                session.delete(file)
-                session.commit()
-                return '', 204
-            else:
-                return 'No fue posible eliminar los archivos', 409
-
+            delete_file(bucket_name="gropo-2-nube-2023", file_dir=file.dir)
+            session.delete(task)
+            session.delete(file)
+            session.commit()
+            return '', 204
         return 'El estado de la tarea de conversion es No Disponible', 409
