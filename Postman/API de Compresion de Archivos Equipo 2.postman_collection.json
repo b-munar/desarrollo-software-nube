@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c60434fc-ed51-4a43-9d3a-a8aa4862f7c8",
+		"_postman_id": "d7032694-c6bd-4629-baa8-4212353996f1",
 		"name": "API de Compresion de Archivos Equipo 2",
 		"description": "Nota: Para poder probar la aplicación debe realizar la intalación de manera local, ( no en VM), apuntando siempre a su localhost:8080 o sin puerto",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -17,7 +17,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"username\": \"user\",\n  \"password\": \"password\",\n  \"password_verify\": \"password\",\n  \"email\": \"email@email.com\"\n}",
+					"raw": "{\n  \"username\": \"user4\",\n  \"password\": \"password\",\n  \"password_verify\": \"password\",\n  \"email\": \"email4@email.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -58,7 +58,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"username\": \"user\",\n  \"password\": \"password\"\n}",
+					"raw": "{\n  \"username\": \"user4\",\n  \"password\": \"password\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
