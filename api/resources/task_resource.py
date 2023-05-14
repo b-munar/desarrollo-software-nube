@@ -4,8 +4,8 @@ from datetime import datetime
 from utils import authenticate
 from cloud_db.schemas import TaskSchema
 from cloud_db.models import Task as TaskModel, File, TypeTask
-import os
 from utils.gcp_storage import upload_file, delete_file
+from utils.gcp_pubsub import compress
 
 task_schema = TaskSchema()
 
@@ -28,6 +28,7 @@ class Tasks(Resource):
         new_task = TaskModel(file_id=new_file.id, user_id=kwargs["user"].id, type_task=new_format)
         session.add(new_task)
         session.commit()
+        compress(new_task.file_id, new_task.type_task)
         return task_schema.dump(new_task)
     
     def get(self,**kwargs):  
